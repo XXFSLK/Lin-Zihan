@@ -1,0 +1,62 @@
+{
+    "task_info": {
+      "label_type": "multi_label",
+      "hierarchical": false,
+      "hierar_taxonomy": "data/rcv1.taxonomy",
+      "hierar_penalty": 1e-5
+    },
+    "device": "cuda",
+    "model_name": "HMCN",
+    "model_dir": "trained_model_rcv1", 
+    "data": {
+      "test_json_files": [
+        "F:/Graduation Design/Graduation Design/new/processed_sogou_data.json"
+      ],
+      "dict_dir": "dict_rcv1",
+      "num_worker": 4
+    },
+    "feature": {
+      "feature_names": [
+        "token"
+      ],
+      "min_token_count": 2,
+      "min_char_count": 2,
+      "token_ngram": 0,
+      "min_token_ngram_count": 0,
+      "min_keyword_count": 0,
+      "min_topic_count": 2,
+      "max_token_dict_size": 1000000,
+      "max_char_dict_size": 150000,
+      "max_token_ngram_dict_size": 10000000,
+      "max_keyword_dict_size": 100,
+      "max_topic_dict_size": 100,
+      "max_token_len": 256,
+      "max_char_len": 1024,
+      "max_char_len_per_token": 4
+    },
+    "embedding": {
+      "type": "embedding",
+      "dimension": 64,
+      "region_embedding_type": "context_word",
+      "region_size": 5,
+      "initializer": "uniform",
+      "fan_mode": "FAN_IN",
+      "uniform_bound": 0.25,
+      "random_stddev": 0.01,
+      "dropout": 0.0
+    },
+    "eval": {
+      "text_file": "F:/Graduation Design/Graduation Design/new/processed_sogou_data.json",
+      "threshold": 0.5,
+      "dir": "eval_dir",
+      "batch_size": 1024,
+      "is_flat": true,
+      "top_k": 100,
+      "model_dir": "checkpoint_dir_rcv1/HMCN_best"
+    },
+    "log": {
+      "logger_file": "log_test_rcv1_hierar",
+      "log_level": "warn"
+    }
+  }
+
